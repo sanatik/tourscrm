@@ -1,0 +1,28 @@
+AddDefaultCharset utf-8
+php_flag display_startup_errors off
+php_flag display_errors on
+php_value post_max_size 1000M
+php_value upload_max_filesize 1000M
+
+# Turn on URL rewriting
+RewriteEngine On
+# Installation directory
+RewriteBase /
+# Protect application and system files from being viewed
+RewriteRule ^(themes|framework|system|images|css|assets|protected|upload) - [L]
+
+# Rewrite all other URLs to index.php/URL
+RewriteRule ^admin/(.*) admin.php/$1 [L]
+#RewriteRule ^upload/? index.php/ [L]
+
+Options +FollowSymLinks
+IndexIgnore */*
+
+# Make the backend accessible via url: http://site/backend.
+# if a directory or a file exists, use it directly
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# otherwise forward it to index.php
+RewriteRule . index.php
+
