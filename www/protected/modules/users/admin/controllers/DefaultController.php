@@ -116,33 +116,25 @@ class DefaultController extends LXAController {
     }
 
     public function actionLogin() {
-        $validate = false;
-        $modelRight1 = new LoginForm1;
-        $modelRight2 = new LoginForm2;
-
+        $modelRight = new LoginForm1;
+        
         if (isset($_POST['ajax']) && $_POST['ajax'] === 'login-form') {
-            echo CActiveForm::validate($modelRight1);
+            echo CActiveForm::validate($modelRight);
+            
             Yii::app()->end();
         }
-        if($validate == false)
-            if (isset($_POST['LoginForm2'])) {
-                $modelRight2->attributes = $_POST['LoginForm2'];
-                if ($modelRight2->validate() && $modelRight2->login()){
-                    $this->render('login', array('model' => $modelRight1));
-                    $validate = true;
-                }
+        
+        if (isset($_POST['LoginForm1'])) {
+            
+            $modelRight->attributes = $_POST['LoginForm1'];
+            if($modelRight->login()){
+                $this->redirect(Yii::app()->user->returnUrl);
+            } else {
+                Yii::app()->user->logout();
             }
-
-            if (isset($_POST['LoginForm1'])) {
-                $modelRight1->attributes = $_POST['LoginForm1'];
-                if($modelRight1->validate() && $modelRight1->login()){
-                    $this->redirect(Yii::app()->user->returnUrl);
-                } else {
-                    Yii::app()->user->logout();
-                }
-            }
-        if($validate == false)
-            $this->render('login2', array('model' => $modelRight2));
+        }else{
+            $this->render('login', array('model' => $modelRight));
+        }
     }
 
     public function actionLogout() {

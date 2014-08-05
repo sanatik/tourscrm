@@ -14,8 +14,6 @@
 
     <?php echo $form->passwordFieldRow($model, 'password'); ?>
 
-    <?php echo $form->dropDownListRow($model, 'point_id', Points::getListItems()); ?>
-
     <?php echo $form->checkBoxRow($model, 'rememberMe'); ?>
 
     <div class="form-actions">

@@ -3,11 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="/themes/lxadmin/styles/component.css"/>
-    <link rel="stylesheet" href="/themes/lxadmin/styles/offline-theme-slide.css"/>
     <script type="text/javascript" src="/themes/lxadmin/js/jquery.js"></script>
-    <script type="text/javascript" src="/themes/lxadmin/js/offline.min.js"></script>
     <script src="http://code.jquery.com/jquery-latest.js"></script>
-    <title>Coffee :: <?=$this->pageTitle?></title>
+    <title>Tour CRM :: <?=$this->pageTitle?></title>
     <style type="text/css">
         body {
             padding-top: 60px;
@@ -30,16 +28,6 @@
                 return false;
             });
         });
-    </script>
-    <script>
-        var run = function(){
-            var req = new XMLHttpRequest();
-            req.timeout = 5000;
-            req.open('GET', 'http://localhost:8888/walter/0', true);
-            req.send();
-        }
-
-        setInterval(run, 3000);
     </script>
 </head>
 <body>

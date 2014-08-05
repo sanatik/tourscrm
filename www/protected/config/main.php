@@ -7,7 +7,7 @@
 // CWebApplication properties can be configured here.
 return array(
     'basePath' => dirname(__FILE__) . DIRECTORY_SEPARATOR . '..',
-    'name' => 'Coffee',
+    'name' => 'Tour CRM',
     // preloading 'log' component
     'preload' => array('log', 'translate'),
 
@@ -103,7 +103,7 @@ return array(
 
         // uncomment the following to use a MySQL database
         'db' => array(
-            'connectionString' => 'mysql:host=localhost;dbname=coffee',
+            'connectionString' => 'mysql:host=localhost;dbname=tourcrm',
             'emulatePrepare' => true,
             'username' => 'root',
             'password' => '',

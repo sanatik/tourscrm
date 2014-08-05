@@ -6,7 +6,9 @@
  * data can identity the user.
  */
 class UserIdentity extends CUserIdentity {
+
     private $_id;
+
     /**
      * Authenticates a user.
      * The example implementation makes sure if the username and password
@@ -32,25 +34,22 @@ class UserIdentity extends CUserIdentity {
     }
 
     public function authenticate() {
+        
         $model = Users::model()->find('username=:username', array(':username' => $this->username));
-        if ($model === null)
+        if ($model === null){
             $this->errorCode = self::ERROR_USERNAME_INVALID;
-        else if (!Yii::app()->getModule('users')->validatePassword($model->password, $this->password))
+        }else if (!Yii::app()->getModule('users')->validatePassword($model->password, $this->password)){
             $this->errorCode = self::ERROR_PASSWORD_INVALID;
-        else if(Yii::app()->user->getState('userId') != $model->id){
-            $this->errorCode = self::ERROR_USERNAME_INVALID;
-            CVarDumper::dump(Yii::app()->user->getState('userId'),1,1); die;
         }else {
             $this->errorCode = self::ERROR_NONE;
             $this->_id = $model->id;
             $this->setState('username', $model->username);
-            $this->setState('username2', $model->username2);
         }
-
-        return !$this->errorCode;
+        return $this->errorCode;
     }
 
     public function getId() {
         return $this->_id;
     }
+
 }
