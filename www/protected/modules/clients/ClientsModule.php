@@ -1,6 +1,6 @@
 <?php
 
-class IngredientsModule extends CWebModule {
+class ClientsModule extends CWebModule {
     public function init() {
         // this method is called when the module is being created
         // you may place code here to customize the module or the application
@@ -8,7 +8,8 @@ class IngredientsModule extends CWebModule {
         // import the module-level models and components
         $endName = Yii::app()->endName;
         $this->setImport(array(
-            "ingredients.models.*",
+            "clients.models.*",
+            "clients.{$endName}.components.*",
         ));
         Yii::app()->onModuleCreate(new CEvent($this));
     }

@@ -52,19 +52,9 @@
                     'class' => 'bootstrap.widgets.TbMenu',
                     'items' => array(
                         array('label' => 'Главная', 'url' => '/'),
-                        array('label' => 'Структура', 'items' => array(
-                            array('label' => 'Виды', 'url' => $this->createUrl('/sections')),
-                            array('label' => 'Ингредиенты', 'url' => $this->createUrl('/ingredients')),
-                            '---',
-                            array('label' => 'Точки', 'url' => $this->createUrl('/points')),
-                        )),
-                        array('label' => 'Заказы', 'url' => $this->createUrl('/orders'), 'active' => (@$this->getModule()->id == 'orders')),
-
-                        array('label' => 'Статистика', 'items' => array(
-                            array('label' => 'В точках', 'url' => $this->createUrl('/statpoint')),
-                            '---',
-                            array('label' => 'Ингредиенты', 'url' => $this->createUrl('/statcategory')),
-                            array('label' => 'Типы', 'url' => $this->createUrl('/statsection')),
+                        array('label' => 'Клиенты', 'items' => array(
+                            array('label' => 'Добавить клиента', 'url' => $this->createUrl('/clients/default/create')),
+                            array('label' => 'Клиенты', 'url' => $this->createUrl('/clients/default/admin')),
                         )),
                         array('label' => 'Пользователи', 'url' => $this->createUrl('/users'), 'active' => (@$this->getModule()->id == 'users')),
                     ),
@@ -80,7 +70,7 @@
         }
         $this->widget('bootstrap.widgets.TbNavbar', array(
             'type' => null, // null or 'inverse'
-            'brand' => 'Coffee',
+            'brand' => 'Tour CRM',
             'brandUrl' => '#',
             'collapse' => true, // requires bootstrap-responsive.css
             'items' => $itemsArray,

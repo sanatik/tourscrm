@@ -1,6 +1,6 @@
 <div class="navbar">
     <div class="navbar-inner">
-        <span class="brand">Изменение ингредиента</span>
+        <span class="brand">Изменить клиента</span>
     </div>
 </div>
 

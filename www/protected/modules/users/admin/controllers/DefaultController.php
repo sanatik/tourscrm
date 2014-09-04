@@ -117,19 +117,21 @@ class DefaultController extends LXAController {
 
     public function actionLogin() {
         $modelRight = new LoginForm1;
-        
+
         if (isset($_POST['ajax']) && $_POST['ajax'] === 'login-form') {
             echo CActiveForm::validate($modelRight);
-            
+
             Yii::app()->end();
         }
         
         if (isset($_POST['LoginForm1'])) {
-            
+
             $modelRight->attributes = $_POST['LoginForm1'];
             if($modelRight->login()){
+
                 $this->redirect(Yii::app()->user->returnUrl);
             } else {
+
                 Yii::app()->user->logout();
             }
         }else{
