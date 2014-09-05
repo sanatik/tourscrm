@@ -6,7 +6,7 @@
  * The followings are the available columns in table '{{clients}}':
  * @property integer $id
  * @property string $name
- * @property string $phone
+ * @property string $phones
  * @property string $email
  * @property integer $isSendStatus
  * @property integer $isSubscribe
@@ -100,5 +100,10 @@ class Clients extends CActiveRecord
         return new CActiveDataProvider($this, array(
             'criteria'=>$criteria,
         ));
+    }
+    
+    public function listClients(){
+        $model = Clients::model()->findAll();
+        return CHtml::listData($model, "id", "name");
     }
 }
